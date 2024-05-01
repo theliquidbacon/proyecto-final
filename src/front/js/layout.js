@@ -1,40 +1,97 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation, Navigate } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
-import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Landing } from "./pages/landing";
+import { Login } from "./pages/login";
+import { Signupintrovertido } from "./pages/signupintrovertido";
+import { Signupextrovertido } from "./pages/signupextrovertido";
+import { Profile } from "./pages/profile";
+import { ProfilEdit } from "./pages/profiledit";
+import VideocallCine from "./pages/videocall";
+import { VideoRoom } from "./pages/videoroom";
+import NotFound from "./pages/notfound";
+import Videocallvideojuegos from "./pages/videocallvideojuegos";
+import Videocalldeportes from "./pages/videocalldeportes";
+import VideocallArquitecto from "./pages/videocallarquitecto";
+import VideocallGamer from "./pages/videocallgamer";
+import VideocallFiesta from "./pages/videocallfiesta";
+import VideocallViajero from "./pages/videocallviajero";
 
-//create your first component
 const Layout = () => {
-    //the basename is used when your project is published in a subdirectory and not in the root of the domain
-    // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+    const location = useLocation();
+
+    const isFooterHidden = () => {
+        return location.pathname === "/videocallcine" || location.pathname === "/videocallvideojuegos" ||
+            location.pathname === "/videocalldeportes" || location.pathname === "/videocallgamer" || location.pathname === "/videocallarquitecto" ||
+            location.pathname === "/videocallfiesta" || location.pathname === "/videocallviajero";
+    };
+
+    const isNavbarHidden = () => {
+        return location.pathname === "/videocallcine" || location.pathname === "/videocallvideojuegos" ||
+            location.pathname === "/videocalldeportes" || location.pathname === "/videocallgamer" || location.pathname === "/videocallarquitecto" ||
+            location.pathname === "/videocallfiesta" || location.pathname === "/videocallviajero";
+    };
+
+    useEffect(() => {
+        const token = localStorage.getItem("miTokenJWT");
+
+        if (!token && !isPublicRoute(location.pathname)) {
+            Navigate("/login");
+        }
+    }, [location.pathname]);
+
+    const isPublicRoute = (pathname) => {
+        const publicRoutes = ["/", "/login", "/signupintrovertido", "/signupextrovertido", "/about", "/contact", "/terms", "/privacy"];
+        return publicRoutes.includes(pathname);
+    };
+
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL === "") {
+        return <BackendURL />;
+    }
 
     return (
         <div>
-            <BrowserRouter basename={basename}>
-                <ScrollToTop>
-                    <Navbar />
-                    <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
-                    </Routes>
-                    <Footer />
-                </ScrollToTop>
-            </BrowserRouter>
+            <ScrollToTop>
+                {!isNavbarHidden() && <Navbar />}
+                <Routes>
+                    <Route element={<Landing />} path="/" />
+                    <Route element={<VideocallCine />} path="/videocallcine" />
+                    <Route element={<Videocallvideojuegos />} path="/videocallvideojuegos" />
+                    <Route element={<Videocalldeportes />} path="/videocalldeportes" />
+                    <Route element={<VideocallArquitecto />} path="/videocallarquitecto" />
+                    <Route element={<VideocallGamer />} path="/videocallgamer" />
+                    <Route element={<VideocallFiesta />} path="/videocallfiesta" />
+                    <Route element={<VideocallViajero />} path="/videocallviajero" />
+                    <Route element={<VideoRoom />} path="/home" />
+                    <Route element={<Profile />} path="/profile" />
+                    <Route element={<ProfilEdit />} path="/editprofile" />
+                    <Route element={<Signupextrovertido />} path="/signupextrovertido" />
+                    <Route element={<Signupintrovertido />} path="/signupintrovertido" />
+                    <Route element={<Demo />} path="/demo" />
+                    <Route element={<Login />} path="/login" />
+                    <Route element={<Single />} path="/single/:theid" />
+                    <Route element={<NotFound />} path="*" />
+                </Routes>
+                {!isFooterHidden() && <Footer />}
+            </ScrollToTop>
         </div>
     );
 };
 
-export default injectContext(Layout);
+const App = () => (
+    <BrowserRouter>
+        <Layout />
+    </BrowserRouter>
+);
+
+export default injectContext(App);

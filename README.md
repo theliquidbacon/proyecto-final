@@ -1,81 +1,67 @@
-# WebApp boilerplate with React JS and Flask API
+  <h3 align="center">Shelpen</h3>
+  <p align="center">
+   Existen diversas opiniones y datos que sugieren que el mundo podría estar experimentando un aumento en la introversión. Muchas personas suelen cerrarse y perder oportunidades por lo aislado que se ha convertido el mundo.
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+Estudios indican que las personas pasan más tiempo solas que en décadas anteriores. Esto se debe en parte al auge de la tecnología, que permite el entretenimiento, la comunicación y el trabajo individuales.
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+Actividades como leer, jugar videojuegos y pasar tiempo en la naturaleza han ganado popularidad, lo que indica una inclinación hacia pasatiempos introvertidos, también existe un creciente reconocimiento de los efectos negativos de la sobreestimulación social, lo que lleva a que las personas busquen espacios tranquilos y experiencias solitarias para recargarse.
 
-### 1) Installation:
+Si bien existen indicadores que sugieren un aumento en las tendencias introvertidas a nivel global, es crucial considerar la naturaleza compleja de la personalidad y los diversos factores que influyen en el comportamiento individual y social. La introversión no es algo bueno o malo, sino una característica que puede enriquecer las experiencias y las relaciones de diversas maneras.
 
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
+Shelpen surge de todo esto como un lugar seguro y un espacio donde introvertidos y extrovertidos pueden interactuar entre ellos con gustos en común como base para poder crear herramientas sociales y tener un lugar aun en el aislamiento en el que no te sientas solo.
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+![("logo")](https://i.imgur.com/KDathpi.jpeg "logo")
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
+<!-- ABOUT THE PROJECT -->
+## Acerca de el proyecto
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+### Hecho con
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
 
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
+* HTML5 
+  CSS3 
+  Bootstrap.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Undo a migration
 
-You are also able to undo a migration by running
 
-```sh
-$ pipenv run downgrade
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+### Installation
+
+To install and use follow these simple steps
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the app
+```
+npm run start
 ```
 
-### Backend Populate Table Users
+<!-- ROADMAP -->
+## Roadmap
 
-To insert test users in the database execute the following command:
+- [Varias páginas con HTML5 + CSS3 + Bootstrap.
 
-```sh
-$ flask insert-test-users 5
-```
+Autetitificación de usuario (Login + Registro + Recordar Contraseña).
 
-And you will see the following message:
+API customizada hecha con JWT.
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
+Integración de una API de terceros (embeds y iframes no cuentan), debe ser una integración back-end.
 
-### **Important note for the database and the data inside it**
+<!-- LICENSE -->
+## License
+ 
 
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
+<!-- CONTACT -->
+## Contact
 
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
-
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).

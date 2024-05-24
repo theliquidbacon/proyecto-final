@@ -5,14 +5,16 @@ import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
+from flask_cors import CORS
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from werkzeug.utils import secure_filename
-# from app import app
+#from app import app
 
 
 api = Blueprint('api', __name__)
+CORS(api)
 
 
 @api.route('/hello', methods=['POST', 'GET'])
@@ -121,7 +123,6 @@ def get_id_profile(user_id):
 #-----------------------------------------------------------------
 # EDIT PROFILE
 
-
 @api.route('/editprofile', methods=['POST'])
 @jwt_required()
 def update_profile():
@@ -131,17 +132,15 @@ def update_profile():
     user = User.query.filter_by(id=current_user_id).first()
 
     if user:
-        data = request.form
-        if 'user_name' in data:
-            user.user_name = data['user_name']
-        if 'description' in data:
-            user.description = data['description'] 
-        # if 'profile_img' in request.files:
-        #     profile_img = request.files['profile_img']
-        #     if profile_img:
-        #         filename = secure_filename(profile_img.filename)
-        #         profile_img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        #         user.profile_img = filename
+        if 'user_name' in request.form:
+            user.user_name = request.form['user_name']
+        if 'description' in request.form:
+            user.description = request.form['description'] 
+        if 'profile_img' in request.files:  # Check if 'profile_img' is in the files
+            profile_img = request.files['profile_img']
+            filename = secure_filename(profile_img.filename)
+            profile_img.save('/path/to/save/' + filename)
+            user.profile_img = '/path/to/save/' + filename  # Save the profile image URL
 
         db.session.commit()
 

@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SubiendoImagenes from './Subiendoimagenes.js';
 
 export const ProfileFormEdit = () => {
   const [userName, setUserName] = useState("");
   const [description, setDescription] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
 
   const navigate = useNavigate();
 
   const token = localStorage.getItem("miTokenJWT");
+
+  if (!token) {
+    console.error('No se encontró el token de autenticación');
+    return;
+  }
 
   const handleUserNameChange = (event) => {
     setUserName(event.target.value);
@@ -18,38 +26,52 @@ export const ProfileFormEdit = () => {
     setDescription(event.target.value);
   };
 
-  const handleProfilePictureChange = (event) => {
-    const file = event.target.files[0];
-    setProfilePicture(file);
+  const handleProfilePictureChange = (imageUrl) => {
+    if (imageUrl) {
+      setProfilePicture(imageUrl);
+    } else {
+      console.error('No image URL provided');
+    }
   };
-
 
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    console.log("userName:", userName);
+    console.log("description:", description);
+    console.log("profilePicture:", profilePicture);
+    console.log("token:", token);
+
+    const token = localStorage.getItem('miTokenJWT'); // Recupera el token del almacenamiento local
+
     const formData = new FormData();
     formData.append("user_name", userName);
     formData.append("description", description);
-    formData.append("profile_img", profilePicture);
+    if (profilePicture) {
+      formData.append("profile_img", profilePicture);
+  }
+
+    console.log("Datos enviados:", formData);
 
     const response = await fetch(process.env.BACKEND_URL + "/api/editprofile", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`
       },
-      body: formData,
-    });
+      body: formData
+  });
 
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data.message); // Optional: Show success message to the user
-      navigate('/profile');
+    console.log("Respuesta del servidor:", response);
 
 
-    } else {
-      throw new Error("Failed to update profile");
+    if (!response.ok) {
+      console.error(`Error: ${response.status}`);
+      return;
     }
+
+    const data = await response.json();
+    console.log(data);
   };
 
   return (
@@ -68,8 +90,7 @@ export const ProfileFormEdit = () => {
       >
         <div className="row">
           <div className="col-md-6 d-flex align-items-center">
-            <input type="file" accept="image/*" onChange={handleProfilePictureChange} />
-
+            <SubiendoImagenes onImageUpload={handleProfilePictureChange} />
           </div>
           <div className="col-md-6 d-flex justify-content-center align-items-center">
             <input
@@ -187,7 +208,7 @@ export const ProfileFormEdit = () => {
             </ul>
           </div>
         </div>
-        <button className="btn btn-warning" type="submit" >
+        <button className="btn btn-success" type="submit" >
           Guarda los cambios
         </button>
       </form>

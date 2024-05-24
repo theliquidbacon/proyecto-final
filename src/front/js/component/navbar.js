@@ -51,7 +51,7 @@ export const Navbar = () => {
 	const logoLink = isLoggedIn ? "/home" : "/";
 
 	return (
-		<nav className="navbar navbar-expand-lg" style={{ background: "linear-gradient(to bottom, #ffd358 0%, #f0f0f0 100%)" }}>
+		<nav className="navbar navbar-expand-lg" style={{ background: "linear-gradient(to bottom, #71E649 0%, #f0f0f0 100%)" }}>
 			<div className="container-fluid">
 				<a className="navbar-brand" href={logoLink}>
 					<img src={navbarlogo} alt="Adoptanintrovert Logo" style={{ width: 270, height: 50 }} />
@@ -77,7 +77,7 @@ export const Navbar = () => {
 									</span>
 								</li>
 								<li className="nav-item mx-2">
-									<a className="btn btn-warning" href="/profile">
+									<a className="btn btn-success" href="/profile">
 										Mi Perfil
 									</a>
 								</li>
@@ -91,17 +91,17 @@ export const Navbar = () => {
 							<>
 								{/* Add your non-logged-in user content here */}
 								<li className="nav-item">
-									<a className="btn btn-warning" href="/login" style={{ color: "black" }}>
+									<a className="btn btn-success" href="/login" style={{ color: "black" }}>
 										Entra en tu cuenta
 									</a>
 								</li>
 								<li className="nav-item mx-2">
-									<a className="btn btn-warning" href="/signupintrovertido">
+									<a className="btn btn-success" href="/signupintrovertido">
 										Registrate como introvertido
 									</a>
 								</li>
 								<li className="nav-item">
-									<a className="btn btn-warning" href="/signupextrovertido">
+									<a className="btn btn-success" href="/signupextrovertido">
 										¡Soy extrovertido!
 									</a>
 								</li>

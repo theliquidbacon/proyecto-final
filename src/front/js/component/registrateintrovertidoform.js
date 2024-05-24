@@ -139,7 +139,7 @@ export function RegistrateintrovertidoForm() {
                             </div>
                         </div>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-warning">
+                            <button type="submit" className="btn btn-success">
                                 Sign up
                             </button>
                         </div>

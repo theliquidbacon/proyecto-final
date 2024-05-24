@@ -15,7 +15,7 @@ export const Single = props => {
 			<hr className="my-4" />
 
 			<Link to="/">
-				<span className="btn btn-warning btn-lg" href="#" role="button">
+				<span className="btn btn-success btn-lg" href="#" role="button">
 					Back home
 				</span>
 			</Link>

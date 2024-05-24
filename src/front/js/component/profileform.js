@@ -5,10 +5,16 @@ import { Link } from "react-router-dom";
 export const ProfileForm = () => {
   const [userName, setUserName] = useState("");
   const [description, setDescription] = useState("");
+  const [profileImage, setProfileImage] = useState(imageholder);
 
 
   useEffect(() => {
     fetchProfileData();
+
+    const imageUrl = localStorage.getItem("profileImage");
+    if (imageUrl) {
+      setProfileImage(imageUrl);
+    }
   }, []);
 
   const fetchProfileData = async () => {
@@ -51,7 +57,7 @@ export const ProfileForm = () => {
         <div className="row">
           <div className="col-md-6 d-flex align-items-center">
             <img
-              src={imageholder}
+              src={profileImage}
               className="img-fluid rounded-circle"
               style={{ width: 300, height: 300, borderRadius: 200 }}
               alt="Profile"
@@ -95,7 +101,7 @@ export const ProfileForm = () => {
               {/* Add your list items here */}
             </ul>
           </div>
-          <Link to="/editprofile" className="btn btn-warning">Edita tu perfil</Link>
+          <Link to="/editprofile" className="btn btn-success">Edita tu perfil</Link>
 
         </div>
       </form>

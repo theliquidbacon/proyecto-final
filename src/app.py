@@ -38,6 +38,9 @@ db.init_app(app)
 # Allow CORS requests to this API
 CORS(app)
 
+# Import routes after app and db have been initialized
+from api import routes
+
 # add the admin
 setup_admin(app)
 

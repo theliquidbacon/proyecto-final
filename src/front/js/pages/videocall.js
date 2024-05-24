@@ -123,7 +123,7 @@ function MeetingView() {
           <button
             id="joinButton"
             onClick={joinMeeting}
-            className="btn btn-warning my-5"
+            className="btn btn-success my-5"
           >
             Unirse a la conferencia
           </button>

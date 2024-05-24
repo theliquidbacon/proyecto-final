@@ -92,8 +92,7 @@ h3 {
   align-items: center;
   justify-content: center;
   border-radius: 150px;
-  background-color: #ffd358
-  ;
+  background-color: #71E649;
   border: none;
   color: #ffffff;
   text-align: center;
@@ -130,8 +129,9 @@ h3 {
   opacity: 1;
   right: 0;
 }
+
 .bar-text {
   font-family: 'Poppins', sans-serif;
-  color: #ffd358; /* Orange color */
-  text-align: center; /* Center the text */
+  color: #71E649;
+  text-align: center;
 }

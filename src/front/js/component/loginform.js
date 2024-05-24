@@ -119,7 +119,7 @@ export const LoginForm = () => {
             <div className="row">
               <div className="col-sm-12 mt-4">
                 <div className="login-botton">
-                  <button type="submit" className="btn btn-warning">
+                  <button type="submit" className="btn btn-success">
                     Login
                   </button>
                 </div>

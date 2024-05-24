@@ -23,7 +23,7 @@ export const VideoRoomCard = () => {
                 </div>
                 <div className="button-card-container">
                     <a href="/videocalldeportes">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-success">
                             Unete a la sala
                         </button>
                     </a>
@@ -42,7 +42,7 @@ export const VideoRoomCard = () => {
 
                 <div className="button-card-container">
                     <a href="/videocallvideojuegos">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-success">
                             Unete a la sala
                         </button>
                     </a></div>
@@ -61,7 +61,7 @@ export const VideoRoomCard = () => {
 
                 <div className="button-card-container">
                     <a href="/videocallgamer">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-success">
                             Unete a la sala
                         </button>
                     </a>
@@ -81,7 +81,7 @@ export const VideoRoomCard = () => {
 
                 <div className="button-card-container">
                     <a href="/videocallfiesta">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-success">
                             Unete a la sala
                         </button>
                     </a>
@@ -101,7 +101,7 @@ export const VideoRoomCard = () => {
 
                 <div className="button-card-container">
                     <a href="/videocallarquitecto">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-success">
                             Unete a la sala
                         </button>
                     </a>
@@ -121,7 +121,7 @@ export const VideoRoomCard = () => {
 
                 <div className="button-card-container">
                     <a href="/videocallviajero">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-success">
                             Unete a la sala
                         </button>
                     </a>
@@ -141,7 +141,7 @@ export const VideoRoomCard = () => {
 
                 <div className="button-card-container">
                     <a href="/videocallcine">
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-success">
                             Unete a la sala
                         </button>
                     </a>
